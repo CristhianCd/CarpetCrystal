@@ -1,0 +1,49 @@
+--- ../src-base/minecraft/net/minecraft/world/end/DragonSpawnManager.java
++++ ../src-work/minecraft/net/minecraft/world/end/DragonSpawnManager.java
+@@ -2,6 +2,8 @@
+ 
+ import java.util.List;
+ import java.util.Random;
++
++import carpet.CarpetSettings;
+ import net.minecraft.entity.Entity;
+ import net.minecraft.entity.item.EntityEnderCrystal;
+ import net.minecraft.util.math.BlockPos;
+@@ -37,6 +39,7 @@
+             else
+             {
+                 p_186079_2_.func_186095_a(SUMMONING_PILLARS);
++                // manager.setRespawnState(SUMMONING_DRAGON);
+             }
+         }
+     },
+@@ -66,12 +69,15 @@
+                     else
+                     {
+                         int k = 10;
+-
+-                        for (BlockPos.MutableBlockPos blockpos$mutableblockpos : BlockPos.func_177975_b(new BlockPos(worldgenspikes$endspike.func_186151_a() - 10, worldgenspikes$endspike.func_186149_d() - 10, worldgenspikes$endspike.func_186152_b() - 10), new BlockPos(worldgenspikes$endspike.func_186151_a() + 10, worldgenspikes$endspike.func_186149_d() + 10, worldgenspikes$endspike.func_186152_b() + 10)))
+-                        {
+-                            p_186079_1_.func_175698_g(blockpos$mutableblockpos);
++                        /*
++                         * No -10 air blocks in xyz of EndCrystals | NoEndSpikes | Crystal-Carpet
++                         */
++                        if (!CarpetSettings.noEndSpikes) {
++                            for (BlockPos.MutableBlockPos blockpos$mutableblockpos : BlockPos.func_177975_b(new BlockPos(worldgenspikes$endspike.func_186151_a() - 10, worldgenspikes$endspike.func_186149_d() - 10, worldgenspikes$endspike.func_186152_b() - 10), new BlockPos(worldgenspikes$endspike.func_186151_a() + 10, worldgenspikes$endspike.func_186149_d() - 10, worldgenspikes$endspike.func_186152_b() + 10)))
++                            {
++                                p_186079_1_.func_175698_g(blockpos$mutableblockpos);
++                            }
+                         }
+-
+                         p_186079_1_.func_72876_a((Entity)null, (double)((float)worldgenspikes$endspike.func_186151_a() + 0.5F), (double)worldgenspikes$endspike.func_186149_d(), (double)((float)worldgenspikes$endspike.func_186152_b() + 0.5F), 5.0F, true);
+                         WorldGenSpikes worldgenspikes = new WorldGenSpikes();
+                         worldgenspikes.func_186143_a(worldgenspikes$endspike);
+@@ -93,7 +99,7 @@
+             if (p_186079_4_ >= 100)
+             {
+                 p_186079_2_.func_186095_a(END);
+-                p_186079_2_.func_186087_f();
++                p_186079_2_.func_186087_f(); // <- Changes
+ 
+                 for (EntityEnderCrystal entityendercrystal : p_186079_3_)
+                 {

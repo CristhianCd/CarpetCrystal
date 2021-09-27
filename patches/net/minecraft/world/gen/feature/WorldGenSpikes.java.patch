@@ -1,0 +1,44 @@
+--- ../src-base/minecraft/net/minecraft/world/gen/feature/WorldGenSpikes.java
++++ ../src-work/minecraft/net/minecraft/world/gen/feature/WorldGenSpikes.java
+@@ -2,6 +2,8 @@
+ 
+ import java.util.Random;
+ import javax.annotation.Nullable;
++
++import carpet.CarpetSettings;
+ import net.minecraft.entity.item.EntityEnderCrystal;
+ import net.minecraft.init.Blocks;
+ import net.minecraft.util.math.AxisAlignedBB;
+@@ -34,19 +36,22 @@
+         else
+         {
+             int i = this.field_186146_b.func_186148_c();
+-
+-            for (BlockPos.MutableBlockPos blockpos$mutableblockpos : BlockPos.func_177975_b(new BlockPos(p_180709_3_.func_177958_n() - i, 0, p_180709_3_.func_177952_p() - i), new BlockPos(p_180709_3_.func_177958_n() + i, this.field_186146_b.func_186149_d() + 10, p_180709_3_.func_177952_p() + i)))
+-            {
+-                if (blockpos$mutableblockpos.func_177954_c((double)p_180709_3_.func_177958_n(), (double)blockpos$mutableblockpos.func_177956_o(), (double)p_180709_3_.func_177952_p()) <= (double)(i * i + 1) && blockpos$mutableblockpos.func_177956_o() < this.field_186146_b.func_186149_d())
++            /*
++             * EndSpikes no regeneration | noEndSpikes | Crystal-Carpet
++             */
++            if (!CarpetSettings.noEndSpikes) {
++                for (BlockPos.MutableBlockPos blockpos$mutableblockpos : BlockPos.func_177975_b(new BlockPos(p_180709_3_.func_177958_n() - i, 0, p_180709_3_.func_177952_p() - i), new BlockPos(p_180709_3_.func_177958_n() + i, this.field_186146_b.func_186149_d() + 10, p_180709_3_.func_177952_p() + i)))
+                 {
+-                    this.func_175903_a(p_180709_1_, blockpos$mutableblockpos, Blocks.field_150343_Z.func_176223_P());
++                    if (blockpos$mutableblockpos.func_177954_c((double)p_180709_3_.func_177958_n(), (double)blockpos$mutableblockpos.func_177956_o(), (double)p_180709_3_.func_177952_p()) <= (double)(i * i + 1) && blockpos$mutableblockpos.func_177956_o() < this.field_186146_b.func_186149_d())
++                    {
++                        this.func_175903_a(p_180709_1_, blockpos$mutableblockpos, Blocks.field_150343_Z.func_176223_P());
++                    }
++                    else if (blockpos$mutableblockpos.func_177956_o() > 65)
++                    {
++                        this.func_175903_a(p_180709_1_, blockpos$mutableblockpos, Blocks.field_150350_a.func_176223_P());
++                    }
+                 }
+-                else if (blockpos$mutableblockpos.func_177956_o() > 65)
+-                {
+-                    this.func_175903_a(p_180709_1_, blockpos$mutableblockpos, Blocks.field_150350_a.func_176223_P());
+-                }
+             }
+-
+             if (this.field_186146_b.func_186150_e())
+             {
+                 for (int j = -2; j <= 2; ++j)

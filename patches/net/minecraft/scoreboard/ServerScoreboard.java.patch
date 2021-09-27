@@ -1,0 +1,10 @@
+--- ../src-base/minecraft/net/minecraft/scoreboard/ServerScoreboard.java
++++ ../src-work/minecraft/net/minecraft/scoreboard/ServerScoreboard.java
+@@ -125,6 +125,7 @@
+     public void func_96533_c(ScoreObjective p_96533_1_)
+     {
+         super.func_96533_c(p_96533_1_);
++        // System.out.println(objective.getDisplayName()); <- Changes
+ 
+         if (this.field_96553_b.contains(p_96533_1_))
+         {
