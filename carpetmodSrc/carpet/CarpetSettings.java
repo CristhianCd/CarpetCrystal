@@ -1,22 +1,5 @@
 package carpet;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
-import java.util.*;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.FileReader;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.FileNotFoundException;
-import java.util.stream.Collectors;
-
 import carpet.carpetclient.CarpetClientChunkLogger;
 import carpet.carpetclient.CarpetClientRuleChanger;
 import carpet.helpers.RandomTickOptimization;
@@ -26,16 +9,24 @@ import carpet.utils.TickingArea;
 import carpet.worldedit.WorldEditBridge;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.init.Blocks;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.dedicated.DedicatedServer;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.ChunkPos;
-import net.minecraft.world.NextTickListEntry;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import net.minecraft.server.MinecraftServer;
+import java.io.*;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import static carpet.CarpetSettings.RuleCategory.*;
 
@@ -46,6 +37,7 @@ public class CarpetSettings
     // TODO: replace these constants at build time
     public static final String carpetVersion = "v21_07_25";
     public static final String minecraftVersion = "1.12.2";
+    public static final String crystalCarpetVersion = "1.1";
     public static final String mcpMappings = "39-1.12";
 
     public static final Logger LOG = LogManager.getLogger();
@@ -159,7 +151,7 @@ public class CarpetSettings
     public static boolean commandLocation = true;
 
     @Rule(desc = "Open player enderchest.", category = {FEATURE, COMMANDS, CRYSTAL_CARPET})
-    public static boolean commandEnderChest = true;
+    public static boolean commandEnderChest;
 
     @Rule(desc = "Open player inventory.", category = {FEATURE, COMMANDS, CRYSTAL_CARPET})
     public static boolean commandInventory;
@@ -922,7 +914,7 @@ public class CarpetSettings
     @Rule(desc = "Dragon eggs when fed meet items spawn more eggs", category = EXPERIMENTAL)
     public static boolean renewableDragonEggs = false;
 
-    @Rule(desc = "Ender dragon drops elytras.", category = {SURVIVAL, FEATURE, CRYSTAL_CARPET})
+    @Rule(desc = "Ender dragon drops elytras", category = {SURVIVAL, FEATURE, CRYSTAL_CARPET})
     public static boolean renewableElytras;
 
     @Rule(desc = "Placing carpets may issue carpet commands for non-op players", category = SURVIVAL)
@@ -994,9 +986,14 @@ public class CarpetSettings
     @Rule(desc = "No end spikes regeneration on respawn ender dragon.", category = {FEATURE, CRYSTAL_CARPET})
     public static boolean noEndSpikes;
 
-    @Rule(desc = "Get total score.", category = {COMMANDS, CRYSTAL_CARPET})
-    public static boolean commandTotal;
+    @Rule(desc = "The total score appears on the scoreboard.", category = {SURVIVAL, FEATURE, CRYSTAL_CARPET})
+    public static boolean totalScore;
 
+    @Rule(desc = "Always ore drops max items with fortune, like Ore RNG", category = {EXPERIMENTAL, FEATURE, CRYSTAL_CARPET})
+    public static boolean oreRNG;
+
+    @Rule(desc = "Player set spawnpoint when trying to sleep", category = {SURVIVAL, FEATURE, CRYSTAL_CARPET})
+    public static boolean respawnPointOnClickBed;
     // ===== API ===== //
 
     /**

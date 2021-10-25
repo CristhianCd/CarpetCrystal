@@ -41,7 +41,6 @@ public class CarpetCommands {
         handler.registerCommand(new CommandTick());
         handler.registerCommand(new CommandTickingArea());
         handler.registerCommand(new CommandTNT());
-        handler.registerCommand(new commandTotal());
         handler.registerCommand(new CommandUnload());
         handler.registerCommand(new CommandUnload13());
         handler.registerCommand(new CommandUpdateCarpet());

@@ -42,3 +42,24 @@ Ender dragon drops elytras.
 - Default value: `false`
 - Suggested options: `false`, `true`
 - Categories: `crystal_carpet`, `survival`, `feature`
+
+## oreRNG
+Always ore drops max items with fortune, like Ore RNG.
+- Type: boolean
+- Default value: `false`
+- Suggested options: `false`, `true`
+- Categories: `crystal_carpet`, `experimental`, `feature`
+
+## totalScore
+The total score appears on the scoreboard.
+- Type: boolean
+- Default value: `false`
+- Suggested options: `false`, `true`
+- Categories: `crystal_carpet`, `survival`, `feature`
+
+## respawnPointOnClickBed
+Player set spawnpoint when trying to sleep
+- Type: boolean
+- Default value: `false`
+- Suggested options: `false`, `true`
+- Categories: `crystal_carpet`, `survival`, `feature`
