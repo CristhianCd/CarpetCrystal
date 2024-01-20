@@ -37,19 +37,39 @@
  
      public Score(Scoreboard p_i2309_1_, ScoreObjective p_i2309_2_, String p_i2309_3_)
      {
-@@ -79,6 +86,11 @@
-         int i = this.field_96655_e;
-         this.field_96655_e = p_96647_1_;
+@@ -76,14 +83,29 @@
  
+     public void func_96647_c(int p_96647_1_)
+     {
++        setScorePoints(p_96647_1_, true);
++    }
++
++    public void setScorePoints(int points, boolean update)
++    {
+         int i = this.field_96655_e;
+-        this.field_96655_e = p_96647_1_;
++        this.field_96655_e = points;
+ 
+-        if (i != p_96647_1_ || this.field_178818_g)
 +        if (CarpetSettings.scoreboardDelta > 0) {
 +            list.add(Pair.of(System.currentTimeMillis(), field_96655_e));
 +            computeScoreDelta();
 +        }
 +
-         if (i != p_96647_1_ || this.field_178818_g)
++        if (i != points || this.field_178818_g)
          {
              this.field_178818_g = false;
-@@ -110,4 +122,33 @@
+             this.func_96650_f().func_96536_a(this);
+         }
++
++        if (update)
++        {
++            this.func_96650_f().func_96534_i(this.field_96657_c);
++        }
+     }
+ 
+     public ScoreObjective func_96645_d()
+@@ -110,4 +132,33 @@
      {
          this.field_178817_f = p_178815_1_;
      }

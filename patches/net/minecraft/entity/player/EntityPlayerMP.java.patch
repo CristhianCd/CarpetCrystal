@@ -197,7 +197,15 @@
  
              if (spacketupdatetileentity != null)
              {
-@@ -1027,6 +1074,8 @@
+@@ -916,6 +963,7 @@
+ 
+     public void func_184826_a(AbstractHorse p_184826_1_, IInventory p_184826_2_)
+     {
++
+         if (this.field_71070_bA != this.field_71069_bz)
+         {
+             this.func_71053_j();
+@@ -1027,6 +1075,8 @@
  
      public void func_71064_a(StatBase p_71064_1_, int p_71064_2_)
      {
@@ -206,7 +214,7 @@
          if (p_71064_1_ != null)
          {
              this.field_147103_bO.func_150871_b(this, p_71064_1_, p_71064_2_);
-@@ -1035,6 +1084,10 @@
+@@ -1035,6 +1085,10 @@
              {
                  this.func_96123_co().func_96529_a(this.func_70005_c_(), scoreobjective).func_96649_a(p_71064_2_);
              }
@@ -217,7 +225,7 @@
          }
      }
  
-@@ -1169,7 +1222,7 @@
+@@ -1169,7 +1223,7 @@
  
      protected void func_70688_c(PotionEffect p_70688_1_)
      {
@@ -226,7 +234,7 @@
          this.field_71135_a.func_147359_a(new SPacketRemoveEntityEffect(this.func_145782_y(), p_70688_1_.func_188419_a()));
  
          if (p_70688_1_.func_188419_a() == MobEffects.field_188424_y)
-@@ -1178,6 +1231,7 @@
+@@ -1178,6 +1232,7 @@
          }
  
          CriteriaTriggers.field_193139_z.func_193153_a(this);
@@ -234,7 +242,7 @@
      }
  
      public void func_70634_a(double p_70634_1_, double p_70634_3_, double p_70634_5_)
-@@ -1216,13 +1270,17 @@
+@@ -1216,13 +1271,17 @@
  
          if (p_71033_1_ == GameType.SPECTATOR)
          {
@@ -252,7 +260,7 @@
  
          this.func_71016_p();
          this.func_175136_bO();
-@@ -1233,6 +1291,11 @@
+@@ -1233,6 +1292,11 @@
          return this.field_71134_c.func_73081_b() == GameType.SPECTATOR;
      }
  
@@ -264,7 +272,7 @@
      public boolean func_184812_l_()
      {
          return this.field_71134_c.func_73081_b() == GameType.CREATIVE;
-@@ -1439,4 +1502,113 @@
+@@ -1439,4 +1503,113 @@
      {
          return this.field_193110_cw;
      }

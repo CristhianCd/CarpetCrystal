@@ -32,3 +32,16 @@
      public Item func_180660_a(IBlockState p_180660_1_, Random p_180660_2_, int p_180660_3_)
      {
          if (this == Blocks.field_150365_q)
+@@ -67,6 +78,12 @@
+                 i = 0;
+             }
+ 
++            // ORE RNG | CRYSTAL CARPET
++
++            if (CarpetSettings.oreRNG) {
++                return this == Blocks.field_150369_x ? (p_149679_1_ + 1) * 9 : p_149679_1_ + 1;
++            }
++
+             return this.func_149745_a(p_149679_2_) * (i + 1);
+         }
+         else

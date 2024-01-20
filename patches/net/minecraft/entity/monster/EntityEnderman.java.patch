@@ -1,0 +1,18 @@
+--- ../src-base/minecraft/net/minecraft/entity/monster/EntityEnderman.java
++++ ../src-work/minecraft/net/minecraft/entity/monster/EntityEnderman.java
+@@ -1,5 +1,6 @@
+ package net.minecraft.entity.monster;
+ 
++import carpet.CarpetSettings;
+ import com.google.common.base.Function;
+ import com.google.common.base.Optional;
+ import com.google.common.base.Predicate;
+@@ -574,7 +575,7 @@
+                 RayTraceResult raytraceresult = world.func_147447_a(new Vec3d((double)((float)MathHelper.func_76128_c(this.field_179473_a.field_70165_t) + 0.5F), (double)((float)j + 0.5F), (double)((float)MathHelper.func_76128_c(this.field_179473_a.field_70161_v) + 0.5F)), new Vec3d((double)((float)i + 0.5F), (double)((float)j + 0.5F), (double)((float)k + 0.5F)), false, true, false);
+                 boolean flag = raytraceresult != null && raytraceresult.func_178782_a().equals(blockpos);
+ 
+-                if (EntityEnderman.field_70827_d.contains(block) && flag)
++                if (EntityEnderman.field_70827_d.contains(block) && flag && !CarpetSettings.endermansNoGrif) // ENDERMANS NO GRIF | CRYSTAL_CARPET
+                 {
+                     this.field_179473_a.func_175490_a(iblockstate);
+                     world.func_175698_g(blockpos);

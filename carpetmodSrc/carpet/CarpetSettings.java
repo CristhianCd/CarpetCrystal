@@ -39,12 +39,14 @@ import org.apache.logging.log4j.Logger;
 import net.minecraft.server.MinecraftServer;
 
 import static carpet.CarpetSettings.RuleCategory.*;
+import static carpet.CarpetSettings.RuleCategory.CRYSTAL_CARPET;
 
 public class CarpetSettings
 {
     public static boolean locked = false;
 
     // TODO: replace these constants at build time
+    public static final String crystalCarpetVersion = "1.2";
     public static final String carpetVersion = "v22_03_22";
     public static final String minecraftVersion = "1.12.2";
     public static final String mcpMappings = "39-1.12";
@@ -160,6 +162,15 @@ public class CarpetSettings
 
     @Rule(desc = "Reduces the permition level to kick players for everyone.", category = COMMANDS)
     public static boolean publicKick;
+
+    @Rule(desc = "Get other player location.", category = {SURVIVAL, COMMANDS, CRYSTAL_CARPET})
+    public static boolean commandLocation = true;
+
+    @Rule(desc = "Open player enderchest.", category = {FEATURE, COMMANDS, CRYSTAL_CARPET})
+    public static boolean commandEnderChest;
+
+    @Rule(desc = "Open player inventory.", category = {FEATURE, COMMANDS, CRYSTAL_CARPET})
+    public static boolean commandInventory;
 
     // ===== CREATIVE TOOLS ===== //
 
@@ -872,7 +883,7 @@ public class CarpetSettings
         return true;
     }
 
-    @Rule(desc = "Mobs no longer can control minecarts", category = FEATURE, extra = "Removed in 1.13")
+    @Rule(desc = "Mobs no longer can control  minecarts", category = FEATURE, extra = "Removed in 1.13")
     @BugFixDefault
     public static boolean mobsDontControlMinecarts = false;
 
@@ -885,6 +896,13 @@ public class CarpetSettings
     })
     @SurvivalDefault
     public static boolean stackableEmptyShulkerBoxes = false;
+
+    @Rule(desc = "Shulker boxes can stack to 64", category = {SURVIVAL, FEATURE, CRYSTAL_CARPET})
+    @SurvivalDefault
+    public static boolean stackableShulkerBoxes = false;
+
+    @Rule(desc = "Endermans cannot carry blocks", category = {SURVIVAL, FEATURE, CRYSTAL_CARPET})
+    public static boolean endermansNoGrif = false;
 
     @Rule(desc = "Named ghasts won't attack players and allow to be ridden and controlled", category = {SURVIVAL, FEATURE}, extra = {
             "Hold a ghast tear to bring a tamed ghast close to you",
@@ -905,6 +923,9 @@ public class CarpetSettings
 
     @Rule(desc = "Guardians turn into Elder Guardian when struck by lightning", category = {EXPERIMENTAL, FEATURE})
     public static boolean renewableElderGuardians = false;
+
+    @Rule(desc = "Ender dragon drops elytras.", category = {EXPERIMENTAL, FEATURE, CRYSTAL_CARPET})
+    public static boolean renewableElytras = false;
 
     @Rule(desc = "Saplings turn into dead shrubs in hot climates and no water access when it attempts to grow into a tree", category = FEATURE)
     public static boolean desertShrubs = false;
@@ -999,6 +1020,18 @@ public class CarpetSettings
     @Rule(desc = "Removes tnt applying velocity to other entities.", category = CREATIVE)
     public static boolean removeTNTVelocity = false;
 
+    @Rule(desc = "No end spikes regeneration on respawn ender dragon.", category = {FEATURE, CRYSTAL_CARPET})
+    public static boolean noEndSpikes;
+
+    @Rule(desc = "The total score appears on the scoreboard.", category = {SURVIVAL, FEATURE, CRYSTAL_CARPET})
+    public static boolean totalScore;
+
+    @Rule(desc = "Always ore drops max items with fortune, like Ore RNG", category = {EXPERIMENTAL, FEATURE, CRYSTAL_CARPET})
+    public static boolean oreRNG;
+
+    @Rule(desc = "Player set spawnpoint when trying to sleep", category = {SURVIVAL, FEATURE, CRYSTAL_CARPET})
+    public static boolean respawnPointOnClickBed;
+
     // ===== API ===== //
 
     /**
@@ -1071,7 +1104,7 @@ public class CarpetSettings
     }
 
     public static enum RuleCategory {
-        TNT, FIX, SURVIVAL, CREATIVE, EXPERIMENTAL, OPTIMIZATIONS, FEATURE, COMMANDS
+        TNT, FIX, SURVIVAL, CREATIVE, EXPERIMENTAL, OPTIMIZATIONS, FEATURE, COMMANDS, CRYSTAL_CARPET
     }
 
     private static boolean validatePositive(int value) {

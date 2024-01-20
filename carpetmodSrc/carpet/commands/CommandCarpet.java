@@ -12,6 +12,7 @@ import net.minecraft.util.math.BlockPos;
 
 import carpet.CarpetSettings;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
 
 public class CommandCarpet extends CommandCarpetBase
 {
@@ -96,7 +97,8 @@ public class CommandCarpet extends CommandCarpetBase
         {
             if (args.length == 0)
             {
-                list_settings(sender, "Current CarpetMod Settings", CarpetSettings.findNonDefault());
+                list_settings(sender, "Current" + TextFormatting.DARK_PURPLE + TextFormatting.BOLD + " CarpetMod " + TextFormatting.WHITE + TextFormatting.BOLD + "Settings", CarpetSettings.findNonDefault());
+                notifyCommandListener(sender, this, TextFormatting.DARK_PURPLE + "Crystal Carpet Mod version: "+ TextFormatting.WHITE + CarpetSettings.crystalCarpetVersion);
                 notifyCommandListener(sender, this, "Carpet Mod version: "+CarpetSettings.carpetVersion);
                 if (sender instanceof EntityPlayer)
                 {

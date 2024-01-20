@@ -27,16 +27,25 @@
          }
  
          return enumactionresult;
-@@ -207,6 +212,8 @@
+@@ -207,11 +212,17 @@
  
      public int func_77976_d()
      {
 +        // Allows players to stack empty shulkerboxes in there inventorys CARPET-XCOM
 +        if(CarpetSettings.stackableShulkersPlayerInventory && CarpetServer.playerInventoryStacking && !func_77942_o() && this.func_77973_b() instanceof ItemShulkerBox) return 64;
++        // Stackable Shulker Boxes | CRYSTAL CARPET
++        if(CarpetSettings.stackableShulkerBoxes && !func_77942_o() && this.func_77973_b() instanceof ItemShulkerBox) return 64;
++
          return this.func_77973_b().func_77639_j();
      }
  
-@@ -334,7 +341,8 @@
+     public boolean func_77985_e()
+     {
++        // if (CarpetSettings.stackeableShulkerBoxes && !hasTagCompound() && this.getItem() instanceof ItemShulkerBox) return true;
+         return this.func_77976_d() > 1 && (!this.func_77984_f() || !this.func_77951_h());
+     }
+ 
+@@ -334,7 +345,8 @@
  
          if (flag)
          {
@@ -46,7 +55,7 @@
          }
      }
  
-@@ -344,7 +352,8 @@
+@@ -344,7 +356,8 @@
  
          if (flag)
          {
@@ -56,7 +65,7 @@
          }
      }
  
-@@ -496,7 +505,8 @@
+@@ -496,7 +509,8 @@
  
      public void func_77980_a(World p_77980_1_, EntityPlayer p_77980_2_, int p_77980_3_)
      {
@@ -66,7 +75,7 @@
          this.func_77973_b().func_77622_d(this, p_77980_1_, p_77980_2_);
      }
  
-@@ -881,4 +891,10 @@
+@@ -881,4 +895,10 @@
      {
          this.func_190917_f(-p_190918_1_);
      }

@@ -168,7 +168,18 @@
          }
      }
  
-@@ -1911,6 +1977,10 @@
+@@ -1402,6 +1468,10 @@
+     {
+         EnumFacing enumfacing = (EnumFacing)this.field_70170_p.func_180495_p(p_180469_1_).func_177229_b(BlockHorizontal.field_185512_D);
+ 
++        if (CarpetSettings.respawnPointOnClickBed) {
++            this.func_180473_a(p_180469_1_, false);
++        }
++
+         if (!this.field_70170_p.field_72995_K)
+         {
+             if (this.func_70608_bn() || !this.func_70089_S())
+@@ -1911,6 +1981,10 @@
          {
              return false;
          }
@@ -179,7 +190,7 @@
          else
          {
              BlockPos blockpos = p_175151_1_.func_177972_a(p_175151_2_.func_176734_d());
-@@ -2044,6 +2114,20 @@
+@@ -2044,6 +2118,20 @@
          this.func_192031_i(new NBTTagCompound());
      }
  
@@ -200,7 +211,7 @@
      private void func_192026_k(@Nullable NBTTagCompound p_192026_1_)
      {
          if (!this.field_70170_p.field_72995_K && !p_192026_1_.func_82582_d())
-@@ -2307,6 +2391,13 @@
+@@ -2307,6 +2395,13 @@
      {
          return this.field_71075_bZ.field_75098_d && this.func_70003_b(2, "");
      }
@@ -214,7 +225,7 @@
  
      public static enum EnumChatVisibility
      {
-@@ -2333,11 +2424,11 @@
+@@ -2333,11 +2428,11 @@
          }
      }
  

@@ -9,7 +9,7 @@
  import net.minecraft.entity.item.EntityEnderCrystal;
  import net.minecraft.init.Blocks;
  import net.minecraft.util.math.AxisAlignedBB;
-@@ -34,19 +36,22 @@
+@@ -34,17 +36,21 @@
          else
          {
              int i = this.field_186146_b.func_186148_c();
@@ -38,7 +38,5 @@
 -                    this.func_175903_a(p_180709_1_, blockpos$mutableblockpos, Blocks.field_150350_a.func_176223_P());
 -                }
              }
--
+ 
              if (this.field_186146_b.func_186150_e())
-             {
-                 for (int j = -2; j <= 2; ++j)

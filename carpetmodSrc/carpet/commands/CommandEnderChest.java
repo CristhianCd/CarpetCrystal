@@ -1,7 +1,10 @@
 package carpet.commands;
 
 import carpet.CarpetSettings;
-import net.minecraft.command.*;
+import net.minecraft.command.CommandException;
+import net.minecraft.command.ICommandSender;
+import net.minecraft.command.PlayerNotFoundException;
+import net.minecraft.command.WrongUsageException;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.InventoryEnderChest;
 import net.minecraft.server.MinecraftServer;

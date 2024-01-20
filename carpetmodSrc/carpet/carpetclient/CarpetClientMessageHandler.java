@@ -69,7 +69,7 @@ public class CarpetClientMessageHandler {
 
         NBTTagCompound chunkData = new NBTTagCompound();
 
-        chunkData.setString("carpetVersion", CarpetSettings.carpetVersion);
+        chunkData.setString("carpetVersion", CarpetSettings.carpetVersion + " | Crystal Carpet Version: " + CarpetSettings.crystalCarpetVersion);
         chunkData.setFloat("tickrate", TickSpeed.tickrate);
         chunkData.setInteger("netVersion", NET_VERSION);
         NBTTagList listNBT = new NBTTagList();
