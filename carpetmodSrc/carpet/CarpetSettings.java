@@ -107,7 +107,7 @@ public class CarpetSettings
     @Rule(desc = "Enables /lazychunkbehavior command", category = COMMANDS, extra = {
             "Makes a chunk act like a lazy chunk for entities and falling sand"
     })
-    
+
     public static boolean commandEntityInfo = true;
 
     @Rule(desc = "Enables /unload command to inspect chunk unloading order", category = COMMANDS)
@@ -900,6 +900,14 @@ public class CarpetSettings
     @Rule(desc = "Shulker boxes can stack to 64", category = {SURVIVAL, FEATURE, CRYSTAL_CARPET})
     @SurvivalDefault
     public static boolean stackableShulkerBoxes = false;
+
+    @Rule(desc="When stackableShulkerBoxes rule is enabled, shulkers that are placed without stacking will give the signal as if it were a non-stackable shulker",
+            category = {FEATURE, CRYSTAL_CARPET, EXPERIMENTAL}, extra = {
+            "Example in a hopper: ",
+            "1-0-0-0-0 -> Signal = 3",
+            "2-0-0-0-0 -> Signal = 1 "
+    })
+    public static boolean noStackableShulkerComparatorSignal = false;
 
     @Rule(desc = "Endermans cannot carry blocks", category = {SURVIVAL, FEATURE, CRYSTAL_CARPET})
     public static boolean endermansNoGrif = false;

@@ -77,3 +77,11 @@ Endermans cannot carry blocks.
 - Default value: `false`
 - Suggested options: `false`, `true`
 - Categories: `crystal_carpet`, `survival`, `feature`
+
+## noStackableShulkerComparatorSignal
+When stackableShulkerBoxes rule is enabled, shulkers that are placed without 
+stacking will give the signal as if it were a non-stackable shulker.
+- Type: boolean
+- Default value: `false`
+- Suggested options: `false`, `true`
+- Categories: `crystal_carpet`, `experimental`, `feature`

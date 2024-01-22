@@ -497,7 +497,7 @@ public class Multimeter {
 			PowerSource block = (PowerSource)newState.getBlock();
 			int oldPower = block.getPowerLevel(world, pos, oldState);
 			int newPower = block.getPowerLevel(world, pos, newState);
-			
+
 			return (oldPower << 8) | newPower;
 		}));
 	}
