@@ -85,3 +85,10 @@ stacking will give the signal as if it were a non-stackable shulker.
 - Default value: `false`
 - Suggested options: `false`, `true`
 - Categories: `crystal_carpet`, `experimental`, `feature`
+
+## mendingFix
+Fix the rng of items with mending.
+- Type: boolean
+- Default value: `false`
+- Suggested options: `false`, `true`
+- Categories: `crystal_carpet`, `survival`, `fix`

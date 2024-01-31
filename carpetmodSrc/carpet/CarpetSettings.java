@@ -806,6 +806,9 @@ public class CarpetSettings
     @Rule(desc = "Enables best-effort saving of savestated chunks", category = FIX)
     public static boolean saveSavestates = false;
 
+    @Rule(desc = "Fix the rng of items with mending.", category = {FIX, SURVIVAL, CRYSTAL_CARPET})
+    public static boolean mendingFix;
+
     // ===== FEATURES ===== //
 
     @Rule(desc = "Enables skyblock on 1.12, all blocks but end portal frames will be removed in newly generated chunks.", category = FEATURE, extra = "WARNING! Don't turn on if not planning to play skyblock.")

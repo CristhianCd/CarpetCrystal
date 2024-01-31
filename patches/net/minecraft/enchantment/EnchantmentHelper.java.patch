@@ -1,0 +1,53 @@
+--- ../src-base/minecraft/net/minecraft/enchantment/EnchantmentHelper.java
++++ ../src-work/minecraft/net/minecraft/enchantment/EnchantmentHelper.java
+@@ -1,5 +1,6 @@
+ package net.minecraft.enchantment;
+ 
++import carpet.CarpetSettings;
+ import com.google.common.collect.Lists;
+ import com.google.common.collect.Maps;
+ import java.util.Iterator;
+@@ -7,6 +8,8 @@
+ import java.util.Map;
+ import java.util.Random;
+ import java.util.Map.Entry;
++
++import com.sun.media.jfxmediaimpl.HostUtils;
+ import net.minecraft.entity.Entity;
+ import net.minecraft.entity.EntityLivingBase;
+ import net.minecraft.entity.EnumCreatureAttribute;
+@@ -277,6 +280,7 @@
+ 
+     public static ItemStack func_92099_a(Enchantment p_92099_0_, EntityLivingBase p_92099_1_)
+     {
++        ItemStack maxDamageItem = ItemStack.field_190927_a;
+         List<ItemStack> list = p_92099_0_.func_185260_a(p_92099_1_);
+ 
+         if (list.isEmpty())
+@@ -286,15 +290,26 @@
+         else
+         {
+             List<ItemStack> list1 = Lists.<ItemStack>newArrayList();
++            List<ItemStack> damageItems = Lists.<ItemStack>newArrayList();
+ 
+             for (ItemStack itemstack : list)
+             {
+                 if (!itemstack.func_190926_b() && func_77506_a(p_92099_0_, itemstack) > 0)
+                 {
+                     list1.add(itemstack);
++                    // CRYSTAL_CARPET
++                    if (itemstack.func_77952_i() > 0)
++                    {
++                        damageItems.add(itemstack);
++                    }
+                 }
+             }
+ 
++            // MENDING FIX | CRYSTAL_CARPET
++            if (CarpetSettings.mendingFix && p_92099_0_ == Enchantments.field_185296_A) {
++                return damageItems.isEmpty() ? ItemStack.field_190927_a : damageItems.get(p_92099_1_.func_70681_au().nextInt(damageItems.size()));
++            }
++
+             return list1.isEmpty() ? ItemStack.field_190927_a : (ItemStack)list1.get(p_92099_1_.func_70681_au().nextInt(list1.size()));
+         }
+     }
